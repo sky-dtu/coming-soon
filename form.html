@@ -1,37 +1,214 @@
-<html>
-  <head>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <title>Join the waitlist</title>
-    <script async src="https://tally.so/widgets/embed.js"></script>
-    <style type="text/css">
-      html {
-        margin: 0;
-        height: 100%;
-        overflow: hidden;
-        background: black;
-      }
-      iframe {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        border: 0;
-      }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zylis - Automated Code Review</title>
+    <style>
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #252525;
+            --text-primary: #e0e0e0;
+            --text-secondary: #888;
+            --accent: #00ff9d;
+            --code-font: 'Courier New', Courier, monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--code-font);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .logo-section {
+            flex-shrink: 0;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+        }
+
+        .title::before {
+            content: ">";
+            margin-right: 1rem;
+            animation: blink 1s infinite;
+        }
+
+        .tagline-section {
+            text-align: right;
+            max-width: 600px;
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.4s forwards;
+            text-align: right;
+        }
+
+        .subtitle {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin: 2rem 0;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.6s forwards;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .form-container {
+            border-radius: 8px;
+            padding: 1rem;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.1);
+        }
+
+        .iframe-wrapper {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .features {
+            margin-top: 1rem;
+            text-align: right;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+        }
+
+        .features p {
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1.5rem;
+            }
+
+            .tagline-section {
+                text-align: left;
+            }
+
+            .description, .features {
+                text-align: left;
+            }
+
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.4rem;
+            }
+
+            .iframe-wrapper {
+                height: 500px;
+            }
+
+            .features {
+                justify-content: flex-start;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <iframe
-      data-tally-src="https://tally.so/r/3EvQqL?transparentBackground=1"
-      width="100%"
-      height="100%"
-      frameborder="0"
-      marginheight="0"
-      marginwidth="0"
-      title="Join the waitlist"
-    ></iframe>
-  </body>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-section">
+                <h1 class="title">Zylis</h1>
+            </div>
+            <div class="tagline-section">
+                <p class="tagline">Intelligent Code Reviews at Scale</p>
+                <div class="features">
+                    <p>Faster Reviews</p>
+                    <p>Better Quality</p>
+                    <p>Zero Friction</p>
+                </div>
+            </div>
+        </header>
+
+        <p class="subtitle">Join the Early Access Waitlist</p>
+
+        <main>
+            <div class="form-container">
+                <div class="iframe-wrapper">
+                    <iframe data-tally-src="https://tally.so/embed/3EvQqL?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="584" frameborder="0" marginheight="0" marginwidth="0" title="Join the waitlist"></iframe>
+                    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
 </html>
